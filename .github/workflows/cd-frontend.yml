@@ -16,6 +16,9 @@ on:
       frontend_host:
         required: true
         type: string
+      frontend_url:
+        required: true
+        type: string
       bucket_name:
         required: true
         type: string
@@ -28,7 +31,7 @@ on:
         required: true
     outputs:
       frontend_url: 
-        value: http://${{inputs.frontend_host}}
+        value: ${{inputs.frontend_url}}
       s3_bucket_hostname: 
         value: ${{inputs.frontend_host}}
       
@@ -38,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: S3 Bucket Frontend
-      url: http://${{inputs.frontend_host}}
+      url: ${{inputs.frontend_url}}
     steps:
       - name: Get Frontend Artifact
         uses: actions/download-artifact@v4
@@ -80,7 +83,7 @@ jobs:
 
       - name: Run Frontend Smoke Test
         run: |
-          export TEST_URL=${{inputs.frontend_host}}
+          export TEST_URL=${{inputs.frontend_url}}
           cd frontend/e2e
           npm install
           npm run smoke
