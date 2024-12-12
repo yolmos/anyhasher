@@ -43,8 +43,8 @@ jobs:
 
       - name: audit
         run: cd frontend && npm audit --omit=dev 
-      
- lint:
+  
+  lint:
     name: 🧼 Ensure Code Style
     runs-on: ubuntu-latest
     needs: build
