@@ -48,7 +48,7 @@ jobs:
           node-version: 16.x
 
       - name: audit
-        run: cd frontend && npm audit --omit=dev 
+        run: cd frontend && npm audit #--omit=dev 
   
   lint:
     name: 🧼 Ensure Code Style
