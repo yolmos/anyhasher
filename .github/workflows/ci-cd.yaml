@@ -17,6 +17,12 @@ jobs:
         with: 
           node-version: 16.x
       
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+          path: frontend/node_modules
+          key: fe-node-${{ hashFiles('frontend/package-lock.json') }}
+
       - name: Install deps
         run: cd frontend && npm i
 
@@ -55,6 +61,12 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 16.x
+
+      - name: Cache Node Modules
+        uses: actions/cache@v4
+        with:
+          path: frontend/node_modules
+          kßey: fe-node-${{ hashFiles('frontend/package-lock.json') }}
 
       - name: Install deps
         run: cd frontend && npm i
