@@ -30,7 +30,7 @@ jobs:
 
   security-audit: 
     name: Audit Deps
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
