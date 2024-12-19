@@ -4,7 +4,7 @@ import { Button, TextField, Paper } from '@material-ui/core';
 import getHashedValue from './services/api.client';
 
 function App() {
-  const [valeToHash, setValueToHash] = useState('');
+  const [valueToHash, setValueToHash] = useState('');
   const [hashedValue, setHashedValue] = useState('');
 
   function updateValueToHash(e) {
@@ -12,7 +12,7 @@ function App() {
   }
 
   async function getHashedValueFromApi() {
-    const hash = await getHashedValue(valeToHash);
+    const hash = await getHashedValue(valueToHash);
     setHashedValue(hash);
   }
 
@@ -26,7 +26,7 @@ function App() {
           size="medium"
           label="Enter value to hash"
           variant="outlined"
-          value={valeToHash}
+          value={valueToHash}
           onChange={updateValueToHash}
         />
       </Paper>
@@ -35,7 +35,7 @@ function App() {
         variant="contained"
         color="primary"
         size="medium"
-        disabled={!valeToHash}
+        disabled={!valueToHash}
         onClick={getHashedValueFromApi}
       >
         GET HASH
