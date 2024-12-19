@@ -4,7 +4,7 @@ class HashController {
     getHash(request, response) {
         const { value } = request.params;
         if(!value) {
-            response.status(400).send('the value cannot be empty');
+            response.status(400).send('el valor no puede estar vacío');
             return;
         }
         const hashedValue = createHash('md5').update(request.params.value).digest('hex');
